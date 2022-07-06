@@ -6,7 +6,7 @@ Components needed to install dependencies.
 
 * :heavy_check_mark: composer
 * :heavy_check_mark: PHP 7.4+
-* lib php-ssh2
+* :heavy_check_mark: lib php-ssh2
 
 ## :atom: Installation
 
