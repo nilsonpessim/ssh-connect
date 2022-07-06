@@ -1,0 +1,24 @@
+{
+  "name": "nilsonpessim/ssh-connect",
+  "description": "Acesso SSH com PHP",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Nilson Pessim",
+      "email": "nilson@techlabs.net.br",
+      "homepage": "https://www.techlabs.net.br",
+      "role": "Developer"
+    }
+  ],
+  "config": {
+    "vendor-dir": "vendor"
+  },
+  "autoload": {
+    "psr-4": {
+      "Source\\": "source/"
+    },
+    "files": [
+      "source/Config/Config.php"
+    ]
+  }
+}
