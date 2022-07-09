@@ -20,9 +20,14 @@ class SSH
      */
     public function __construct()
     {
-        if (!extension_loaded('ssh2')) {
-            echo "<h1>OoOoPs! Não foi encontrada a extensão PHP SSH2 em seu sistema... <br> https://github.com/nilsonpessim/ssh-connect </h1>";
-            exit(1);
+        self::fail_ssh();
+
+        if (!self::connect()){
+            die('Connection Failed');
+        }
+
+        if (!self::authPassword()){
+            die('Connection Failed');
         }
     }
 
@@ -89,6 +94,16 @@ class SSH
         stream_set_blocking($stream,false);
 
         return $stdIo;
+    }
+
+    public function fail_ssh()
+    {
+        if (!extension_loaded('ssh2')) {
+            echo "This system requires the php_ssh2 extension!";
+            exit;
+        }
+
+        return $this;
     }
 }
 
