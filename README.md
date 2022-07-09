@@ -1,8 +1,8 @@
 ## :rocket: SSH Connection
-* :star_struck: Installation and Configuration Repository.
+* :star_struck: Installation and Configuration Repository
 
 ## :computer: Requirements
-Components needed to install dependencies.
+Components needed to install dependencies:
 
 * :heavy_check_mark: composer
 * :heavy_check_mark: PHP 7.4+
@@ -18,28 +18,26 @@ define("CONF_SSH_PASS", "");
 define("CONF_SSH_PORT", 22);
 ```
 
-* In the main directory, the composer.json file has all the project settings, just run it with composer.
+* In the main directory, the composer.json file has all the project settings, just run it with composer:
 ``` 
 composer install
 ```
 
-* Install Lib - *Tested on ubuntu 18.04*:
+* Install Lib - *Tested on Ubuntu 18.04*:
 ``` 
 apt -y update && apt -y upgrade
 apt -y install php-ssh2
 service apache2 restart
 ```
 
-* Install Lib - *Tested on windows 11 - xampp v3.3.0 - php 8.1.6*:
+* Install Lib - *Tested on Windows 11 - xampp v3.3.0 - php 8.1.6*:
 ``` 
 Lib download: https://windows.php.net/downloads/pecl/releases/ssh2/1.3.1/php_ssh2-1.3.1-8.1-ts-vs16-x64.zip
 Copy files to c:\xampp\php\ext folder
 Edit php.ini: extension=php_ssh2.dll
 Restart xampp
-In Xampp Shell check if the extension has been installed: php -m
-
 ```
-
+* In Xampp Shell check if the extension has been installed: php -m:
 ![image](https://user-images.githubusercontent.com/6774062/178117438-18eb1953-2cf9-4c60-a70b-703f4c57e41d.png)
 
 * Basic use:
