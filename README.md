@@ -1,51 +1,15 @@
-## :rocket: SSH Connection
-* :star_struck: Installation and Configuration Repository
+## Library for SSH connection
+This php library is used to connect to remote hosts via SSH
 
-## :computer: Requirements
-Components needed to install dependencies:
+## Requirements
+You need the php_ssh2 library installed in your environment.
 
-* :heavy_check_mark: composer
-* :heavy_check_mark: PHP 7.4+
-* :heavy_check_mark: lib php-ssh2
-
-## :atom: Installation
-
-* In the Config folder, rename the *Config-Example.php* file to *Config.php*, open the file and enter your credentials:
-``` 
-define("CONF_SSH_HOST", "127.0.0.1");
-define("CONF_SSH_USER", "root");
-define("CONF_SSH_PASS", "");
-define("CONF_SSH_PORT", 22);
-```
-
-* In the main directory, the composer.json file has all the project settings, just run it with composer:
-``` 
-composer install
-```
-
-* Install Lib - *Tested on Ubuntu 18.04*:
-``` 
-apt -y update && apt -y upgrade
-apt -y install php-ssh2
-service apache2 restart
-```
-
-* Install Lib - *Tested on Windows 11 - xampp v3.3.0 - php 8.1.6*:
-``` 
-Lib download: https://windows.php.net/downloads/pecl/releases/ssh2/1.3.1/php_ssh2-1.3.1-8.1-ts-vs16-x64.zip
-Copy files to c:\xampp\php\ext folder
-Edit php.ini: extension=php_ssh2.dll
-Restart xampp
-```
-* In Xampp Shell check if the extension has been installed: php -m:
-![image](https://user-images.githubusercontent.com/6774062/178117438-18eb1953-2cf9-4c60-a70b-703f4c57e41d.png)
+* [Install Library Linux](https://github.com/nilsonpessim/ssh-connect/wiki/Install-library-on-Linux-system) - *Tested on Ubuntu 18.04*
+* [Install Library Windows](https://github.com/nilsonpessim/ssh-connect/wiki/Install-library-on-Windows-system) - *Tested on Windows 11 - xampp v3.3.0 - php 8.1.6*
 
 * Basic use:
-``` 
-index.php file in project root
-```
+  * rename the file *config_example.php* in /example to *config.php*, and enter the credentials to access the remote server.
+  * run *localhost/example/index.php*
 
 ## :heart_eyes_cat: Desenvolvedor
-[![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/nilsonpessim)](https://github.com/nilsonpessim)
-[![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://br.linkedin.com/in/nilsonpessim)](https://br.linkedin.com/in/nilsonpessim)
 [![Whatsapp Badge](https://img.shields.io/badge/-Whatsapp-4CA143?style=flat-square&labelColor=4CA143&logo=whatsapp&logoColor=white&link=https://api.whatsapp.com/send?phone=5537999351046)](https://api.whatsapp.com/send?phone=5537999351046)
