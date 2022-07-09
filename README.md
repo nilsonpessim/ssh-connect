@@ -11,5 +11,4 @@ You need the php_ssh2 library installed in your environment.
   * rename the file *config_example.php* in /example to *config.php*, and enter the credentials to access the remote server.
   * run *localhost/example/index.php*
 
-## :heart_eyes_cat: Desenvolvedor
 [![Whatsapp Badge](https://img.shields.io/badge/-Whatsapp-4CA143?style=flat-square&labelColor=4CA143&logo=whatsapp&logoColor=white&link=https://api.whatsapp.com/send?phone=5537999351046)](https://api.whatsapp.com/send?phone=5537999351046)
