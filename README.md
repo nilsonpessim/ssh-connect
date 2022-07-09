@@ -38,10 +38,9 @@ Edit php.ini: extension=php_ssh2.dll
 Restart xampp
 In Xampp Shell check if the extension has been installed: php -m
 
-[image](https://user-images.githubusercontent.com/6774062/178117438-18eb1953-2cf9-4c60-a70b-703f4c57e41d.png)
-
-
 ```
+
+![image](https://user-images.githubusercontent.com/6774062/178117438-18eb1953-2cf9-4c60-a70b-703f4c57e41d.png)
 
 * Basic use:
 ``` 
