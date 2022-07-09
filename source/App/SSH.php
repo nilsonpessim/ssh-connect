@@ -5,7 +5,8 @@ namespace Source\App;
 /**
  * CLASSE PARA CONEXÃO SSH
  * Nilson Pessim
- * 06/07/2022
+ * Criado em 06/07/2022
+ * Atualizado em 09/07/2022
  */
 
 class SSH
@@ -13,6 +14,17 @@ class SSH
 
     /** * @var $connection */
     private $connection;
+
+    /**
+     * Exibe erro caso o usuário não tenha a extensão PHP no sistema.
+     */
+    public function __construct()
+    {
+        if (!extension_loaded('ssh2')) {
+            echo "<h1>OoOoPs! Não foi encontrada a extensão PHP SSH2 em seu sistema... <br> https://github.com/nilsonpessim/ssh-connect </h1>";
+            exit(1);
+        }
+    }
 
     /**
      * @param $host

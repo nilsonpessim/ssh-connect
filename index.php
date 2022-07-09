@@ -7,6 +7,7 @@ use Source\App\SSH;
 
 $objSSH = new SSH();
 
+/*
 // SSH Connect Host - Optional (host, port)
 if (!$objSSH->connect()) {
     die('Connection Failed');
@@ -16,6 +17,7 @@ if (!$objSSH->connect()) {
 if (!$objSSH->authPassword()) {
     die('Authentication Failed');
 }
+*/
 
 // Examples
 var_dump(
