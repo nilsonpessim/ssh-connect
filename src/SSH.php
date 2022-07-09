@@ -1,53 +1,53 @@
 <?php
 
-namespace Source\App;
+namespace Nilsonpessim\SshConnect;
 
 /**
- * CLASSE PARA CONEXÃO SSH
- * Nilson Pessim
- * Criado em 06/07/2022
- * Atualizado em 09/07/2022
+ * SSH Connection
+ * Nilson Pessim - TechLabs
  */
 
 class SSH
 {
 
-    /** * @var $connection */
-    private $connection;
-
     /**
-     * Exibe erro caso o usuário não tenha a extensão PHP no sistema.
+     * @param $host
+     * @param $port
+     * @param $user
+     * @param $pass
      */
-    public function __construct()
+    public function __construct($host = "127.0.0.1", $port = "22", $user = "root", $pass = "")
     {
         self::fail_ssh();
 
-        if (!self::connect()){
-            die('Connection Failed');
+        if (!self::connect($host, $port)){
+            die("<h1>Connection Failed</h1>");
         }
 
-        if (!self::authPassword()){
-            die('Connection Failed');
+        if (!self::authPassword($user, $pass)){
+            die("<h1>Authentication Failed</h1>");
         }
     }
+
 
     /**
      * @param $host
      * @param $port
      * @return bool
      */
-    public function connect($host = CONF_SSH_HOST, $port = CONF_SSH_PORT)
+    public function connect($host, $port)
     {
         $this->connection = ssh2_connect($host, $port);
         return $this->connection ? true : false;
     }
+
 
     /**
      * @param $user
      * @param $pass
      * @return bool
      */
-    public function authPassword($user = CONF_SSH_USER, $pass = CONF_SSH_PASS)
+    public function authPassword($user, $pass)
     {
         return $this->connection ? ssh2_auth_password($this->connection,$user,$pass) : false;
     }
@@ -73,6 +73,7 @@ class SSH
         return stream_get_contents($streamOut);
     }
 
+
     /**
      * @param $command
      * @param $stdErr
@@ -96,11 +97,13 @@ class SSH
         return $stdIo;
     }
 
+    /**
+     * @return $this|void
+     */
     public function fail_ssh()
     {
         if (!extension_loaded('ssh2')) {
-            echo "This system requires the php_ssh2 extension!";
-            exit;
+            die("<h1>This system requires the php_ssh2 extension!</h1>");
         }
 
         return $this;

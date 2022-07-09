@@ -1,24 +1,21 @@
 {
-  "name": "nilsonpessim/ssh-connect",
-  "description": "Acesso SSH com PHP",
-  "minimum-stability": "stable",
-  "authors": [
-    {
-      "name": "Nilson Pessim",
-      "email": "nilson@techlabs.net.br",
-      "homepage": "https://www.techlabs.net.br",
-      "role": "Developer"
-    }
-  ],
-  "config": {
-    "vendor-dir": "vendor"
-  },
-  "autoload": {
-    "psr-4": {
-      "Source\\": "source/"
+    "name": "nilsonpessim/ssh-connect",
+    "description": "Library for SSH connection",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nilsonpessim\\SshConnect\\": "src/"
+        }
     },
-    "files": [
-      "source/Config/Config.php"
-    ]
-  }
+    "authors": [
+        {
+            "name": "Nilson Pessim",
+            "email": "nilson@techlabs.net.br",
+            "homepage": "https://techlabs.net.br",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
 }
