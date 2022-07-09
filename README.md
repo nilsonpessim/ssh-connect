@@ -30,6 +30,19 @@ apt -y install php-ssh2
 service apache2 restart
 ```
 
+* Install Lib - *Tested on windows 11 - xampp v3.3.0 - php 8.1.6*:
+``` 
+Lib download: https://windows.php.net/downloads/pecl/releases/ssh2/1.3.1/php_ssh2-1.3.1-8.1-ts-vs16-x64.zip
+Copy files to c:\xampp\php\ext folder
+Edit php.ini: extension=php_ssh2.dll
+Restart xampp
+In Xampp Shell check if the extension has been installed: php -m
+
+![image](https://user-images.githubusercontent.com/6774062/178117438-18eb1953-2cf9-4c60-a70b-703f4c57e41d.png)
+
+
+```
+
 * Basic use:
 ``` 
 index.php file in project root
