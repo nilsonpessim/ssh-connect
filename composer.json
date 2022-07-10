@@ -1,13 +1,13 @@
 {
     "name": "nilsonpessim/ssh-connect",
-    "description": "Library for SSH connection",
+    "description": "It's an easy way to connect to a remote SSH server in your application",
+    "keywords": [
+        "NilsonPessim",
+        "TechLabs",
+        "ssh connect"
+    ],
     "type": "library",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Nilsonpessim\\SshConnect\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Nilson Pessim",
@@ -16,6 +16,16 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "php": ">=7.4",
+        "ext-ssh2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nilsonpessim\\SshConnect\\": "src/"
+        },
+        "files": [
+            "src/functions.php"
+        ]
+    }
 }

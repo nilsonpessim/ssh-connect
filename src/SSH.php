@@ -4,58 +4,73 @@ namespace Nilsonpessim\SshConnect;
 
 /**
  * SSH Connection
- * Nilson Pessim - TechLabs
+ * TechLabs - Nilson Pessim
  */
 
 class SSH
 {
+    /**
+     * @var
+     */
+    private $connection;
+
+    /**
+     * @var array|string[]
+     */
+    private array $msgError = [
+        "lib"     => "This system requires the php_ssh2 extension!",
+        "connect" => "Connection Failed",
+        "auth"    => "Authentication Failed"
+    ];
 
     /**
      * @param $host
      * @param $port
      * @param $user
      * @param $pass
+     * @param $error
      */
-    public function __construct($host = "127.0.0.1", $port = "22", $user = "root", $pass = "")
+    public function __construct($host = "127.0.0.1", $port = 22, $user = "root", $pass = "", $error = [])
     {
-        self::fail_ssh();
+
+        if (!extension_loaded("ssh2")) {
+            die(msgErrorLib($error["lib"] ?? $this->msgError["lib"]));
+        }
 
         if (!self::connect($host, $port)){
-            die("<h1>Connection Failed</h1>");
+            die(msgErrorConnect($error["connect"] ?? $this->msgError["connect"]));
         }
 
         if (!self::authPassword($user, $pass)){
-            die("<h1>Authentication Failed</h1>");
+            die(msgErrorAuth($error["auth"] ?? $this->msgError["auth"]));
         }
     }
-
 
     /**
      * @param $host
      * @param $port
      * @return bool
      */
-    public function connect($host, $port)
+    public function connect($host, $port): bool
     {
         $this->connection = ssh2_connect($host, $port);
-        return $this->connection ? true : false;
+        return (bool)$this->connection;
     }
-
 
     /**
      * @param $user
      * @param $pass
      * @return bool
      */
-    public function authPassword($user, $pass)
+    public function authPassword($user, $pass): bool
     {
-        return $this->connection ? ssh2_auth_password($this->connection,$user,$pass) : false;
+        return $this->connection && ssh2_auth_password($this->connection,$user,$pass);
     }
 
     /**
      * @return bool
      */
-    public function disconnect()
+    public function disconnect(): bool
     {
         if($this->connection) ssh2_disconnect($this->connection);
         $this->connection = null;
@@ -64,22 +79,21 @@ class SSH
 
     /**
      * @param $stream
-     * @param $id
-     * @return false|string
+     * @param int $id
+     * @return string
      */
-    private function getOutput($stream, $id)
+    private function getOutput($stream, int $id): string
     {
         $streamOut = ssh2_fetch_stream($stream,$id);
         return stream_get_contents($streamOut);
     }
 
-
     /**
-     * @param $command
+     * @param string $command
      * @param $stdErr
-     * @return false|string|null
+     * @return string|null
      */
-    public function exec($command, &$stdErr = null)
+    public function exec(string $command = "ls -la", &$stdErr = null): ?string
     {
         if(!$this->connection) return null;
 
@@ -94,20 +108,8 @@ class SSH
 
         stream_set_blocking($stream,false);
 
+        self::disconnect();
+
         return $stdIo;
     }
-
-    /**
-     * @return $this|void
-     */
-    public function fail_ssh()
-    {
-        if (!extension_loaded('ssh2')) {
-            die("<h1>This system requires the php_ssh2 extension!</h1>");
-        }
-
-        return $this;
-    }
 }
-
-?>
